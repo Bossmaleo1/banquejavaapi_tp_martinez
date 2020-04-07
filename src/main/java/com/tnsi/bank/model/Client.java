@@ -1,39 +1,57 @@
 package com.tnsi.bank.model;
 
-import java.util.Date;
-
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="clients")
 public class Client {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private long idClient;
+	
+	@NotNull(message="Le nom est obligatoire")
 	private String nom;
+	@NotNull(message="Le prenom est obligatoire")
 	private String prenom;
+	@NotNull(message="L'adresse est obligatoire")
 	private String adresse;
-	private String codePostal;
-	private Date dateNaissance;
+	@NotNull(message="L'email est obligatoire")
+	private String email;
+	private String motDePasse;
+	
+	@OneToOne(mappedBy = "client")
+	private Compte compte;
 	
 	public Client() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Client(String nom, String prenom, String adresse, String codePostal, Date dateNaissance) {
+	
+	
+	public Client(String nom, String prenom, String adresse, String email, String motDePasse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
-		this.codePostal = codePostal;
-		this.dateNaissance = dateNaissance;
+		this.email = email;
+		this.motDePasse = motDePasse;
 	}
-	public long getId() {
-		return id;
+
+
+	
+	public long getIdClient() {
+		return idClient;
 	}
-	public void setId(long id) {
-		this.id = id;
+
+
+	public void setIdClient(long idClient) {
+		this.idClient = idClient;
 	}
+
+
 	public String getNom() {
 		return nom;
 	}
@@ -52,22 +70,33 @@ public class Client {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	public String getCodePostal() {
-		return codePostal;
-	}
-	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
-	}
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
+	
 	
 	public void affiche() {
 		System.out.println("Test");
 	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+	
+	
 	
 	
 
