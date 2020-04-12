@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+ 	<display-name>Web Service Server 1</display-name>
+  	<servlet>
+        <servlet-name>rs</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rs</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+</web-app>
